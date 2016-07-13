@@ -1,0 +1,66 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+
+<f:view contentType="text/html" locale="tr">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>I am Title</title>
+        <h:outputScript library="javax.faces" name="jsf.js"/>
+        <h:outputScript library="primefaces" name="jquery/jquery.js"/>
+        <h:outputStylesheet library="primefaces" name="primefaces.css"/>
+        <h:outputStylesheet library="primefaces-bootstrap" name="theme.css"/>
+    </h:head>
+
+    <h:body>
+
+        <div id="wrapper">
+
+            <ui:insert name="header">
+                <ui:include src="/public/template/common/commonHeader.xhtml"/>
+            </ui:insert>
+
+            <p:spacer height="30px"></p:spacer>
+
+            <p:panel style="width:95%;">
+                <figure>
+                    <img src="${request.contextPath}/resources/alu/img/Turkcell2.png" alt="Turkcell"
+                         style="margin-left: -30px"/>
+
+                </figure>
+
+                <div id="main">
+                    <ui:insert name="main">
+                        <ui:include src="/public/template/common/commonMain.xhtml"/>
+                    </ui:insert>
+                </div>
+
+            </p:panel>
+
+            <ui:insert name="footer">
+                <ui:include src="/public/template/common/commonFooter.xhtml"/>
+            </ui:insert>
+
+
+            <!--  <p:dialog id="exceptionDialog" header="Exception occured!" widgetVar="exceptionDialog"
+                        height="500px">
+
+
+                  <p:button onclick="document.location.href = document.location.href;"
+                            value="Reload!"
+                            rendered="#{pfExceptionHandler.type == 'javax.faces.application.ViewExpiredException'}"/>
+              </p:dialog>
+
+              <p:ajaxExceptionHandler type="javax.faces.application.ViewExpiredException"
+                                      update="exceptionDialog"
+                                      onexception="PF('exceptionDialog').show();"/> -->
+
+
+        </div>
+
+    </h:body>
+</f:view>
+</html>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Configuration status="info" >
+    <Properties>
+        <Property name="log-path">${sys:applicationFolder}${sys:file.separator}logs</Property>
+    </Properties>
+
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <!--<PatternLayout charset="${sys:file.encoding}" pattern="[%X{sessionId}][%t]%logger{36}%n    %d{HH:mm:ss.SSS} %-5level  - %msg%n"/>-->
+            <PatternLayout charset="${sys:file.encoding}" pattern="SOUT-LOG4J2-[%t]%logger{36}%n  %d{HH:mm:ss.SSS} %-5level  - %msg%n"/>
+        </Console>
+
+        <!--  filePattern="${log-path}/$${date:yyyy-MM}/vmer1-%d{yyyy-MM-dd}-%i.log.gz" $${date:yyyy-MM-dd-HH-mm}/ -->
+
+        <RollingFile  name="MyFile"  fileName="${log-path}/portal.log" immediateFlush = "true"
+                      filePattern="${log-path}/$${date:yyyy-MM}/portal-%d{yyyy-MM-dd}-%i.log.gz">
+            <PatternLayout charset="UTF-8" pattern="[%t]%logger{36}%n  %d{yyyy-MM-dd@HH:mm:ss.SSS} %-5level - %msg%n%n"/>
+            <!-- <pattern>[%t]%logger{36}%n    %d{yyyy-MM-dd@HH:mm:ss.SSS} %-5level - %msg%n</pattern> -->
+
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <SizeBasedTriggeringPolicy size="100 MB" />
+            </Policies>
+<!-- max indicates the rolling number(%i value may be max 100)-->
+           <DefaultRolloverStrategy max="100">
+                <Delete basePath="${log-path}" maxDepth="2">
+                    <IfFileName glob="*/*.log.gz">
+
+                            <IfAny>
+                                <IfAccumulatedFileSize exceeds="3000 MB" />
+                                <IfAccumulatedFileCount exceeds="100000" />
+                            </IfAny>
+
+                    </IfFileName>
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="com.zaxxer.hikari.HikariConfig" level = "debug" additivity="false">
+            <AppenderRef ref="MyFile"/>
+            <AppenderRef ref="Console"/>
+        </Logger>
+
+        <Logger name="com.zaxxer.hikari.pool" level = "info" additivity="false">
+            <AppenderRef ref="MyFile"/>
+            <AppenderRef ref="Console"/>
+        </Logger>
+
+
+<!--
+        <Logger name="org.hibernate.internal" level = "debug" additivity="false">
+            <AppenderRef ref="MyFile"/>
+            <AppenderRef ref="Console"/>
+        </Logger>-->
+
+        <Logger name="com.alcatel" level = "info" additivity="false">
+            <AppenderRef ref="MyFile"/>
+            <AppenderRef ref="Console"/>
+        </Logger>
+
+        <Logger name="com" level = "info" additivity="false">
+            <AppenderRef ref="MyFile"/>
+            <AppenderRef ref="Console"/>
+        </Logger>
+
+        <Logger name="net" level = "info" additivity="false">
+            <AppenderRef ref="MyFile"/>
+            <AppenderRef ref="Console"/>
+        </Logger>
+
+        <Logger name="org" level = "info" additivity="false">
+            <AppenderRef ref="MyFile"/>
+            <AppenderRef ref="Console"/>
+        </Logger>
+
+        <Logger name="testLog" level = "debug" additivity="false">
+            <AppenderRef ref="MyFile"/>
+        </Logger>
+
+        <Root level="debug"><!-- level: ALL <= TRACE < DEBUG < INFO < WARN < ERROR < FATAL < OFF -->
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="MyFile"/>
+        </Root>
+    </Loggers>
+
+    <!--
+        <RollingFile name="RollingFile" fileName="${baseDir}/app.log"
+          filePattern="${baseDir}/archives/$${date:yyyy-MM}/app-%d{yyyy-MM-dd}.log.gz">
+      <PatternLayout pattern="%d %p %c{1.} [%t] %m%n" />
+      <CronTriggeringPolicy schedule="0 0 0 * * ?"/>
+      <DefaultRolloverStrategy>
+        <Delete basePath="${baseDir}/archives" maxDepth="2">
+          <IfFileName glob="*/app-*.log.gz">
+            <IfLastModified age="30d">
+              <IfAny>
+                <IfAccumulatedFileSize exceeds="100 GB" />
+                <IfAccumulatedFileCount exceeds="10" />
+              </IfAny>
+            </IfLastModified>
+          </IfFileName>
+        </Delete>
+      </DefaultRolloverStrategy>
+    </RollingFile>
+    -->
+</Configuration>

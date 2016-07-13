@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+        <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head>
+    <title>Sticker Story</title>
+    <h:outputStylesheet name="styles.css"/>
+    <h:outputScript name="story-page.js"/>
+</h:head>
+<h:body>
+    <header>
+        <h1>Sticker Story Book</h1>
+    </header>
+    <nav>
+        Drag stickers from the left bar to the canvas.
+    </nav>
+    <aside>
+        <h2>Stickers</h2>
+        <h:panelGroup layout="block" id="stickerContainer">
+            <ui:repeat var="imgName" value="#{stickerSheet.allStickers}">
+                <h:graphicImage name="stickers/${imgName}" style="float:left"
+                                p:draggable="true" p:ondragstart="drag(event)"
+                                p:data-sticker="${imgName}" />
+            </ui:repeat>
+        </h:panelGroup>
+    </aside>
+    <h:panelGroup layout="block" id="content">
+        <canvas id="board" width="1000" height="580" ondrop="drop(event)"
+                ondragover="allowDrop(event)">
+            Canvas Not Supported.
+        </canvas>
+        <h:graphicImage name="canvas2.png" id="background_img" style="display:none;"/>
+    </h:panelGroup>
+    <footer>
+        <small>Made with JSF 2.2 + HTML5 + WebSockets and JSON</small>
+        <ol>
+            <li onclick="toggleLog();">Log</li>
+        </ol>
+    </footer>
+    <div id="logContainer">
+        <h2>log</h2>
+        <h:panelGroup layout="block" id="log"/>
+    </div>
+</h:body>
+</html>

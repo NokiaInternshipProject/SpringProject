@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="ignoreUnresolvablePlaceholders" value="true"/>
+        <property name="locations">
+            <list>
+                <value>file:${applicationFolder}${file.separator}config${file.separator}database.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <context:component-scan base-package="ali.firat.elvin.tr"/>
+
+    <!-- Hibernate SessionFactory Definition -->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <!--<property name="dataSource" ref="dataSource"/> -->
+        <property name="packagesToScan" value="ali.firat.elvin.tr"/>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">${hibernate.dialect}</prop>
+                <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+                <prop key="format_sql">${hibernate.format_sql}</prop>
+                <prop key="use_sql_comments">${hibernate.use_sql_comments}</prop>
+                <prop key="hibernate.cglib.use_reflection_optimizer">${hibernate.cglib.use_reflection_optimizer}</prop>
+                <prop key="hibernate.connection.provider_class">${hibernate.connection.provider_class}</prop>
+                <prop key="hibernate.hikari.minimumIdle">${hibernate.hikari.minimumIdle}</prop>
+                <prop key="hibernate.hikari.maximumPoolSize">${hibernate.hikari.maximumPoolSize}</prop>
+                <prop key="hibernate.hikari.idleTimeout">${hibernate.hikari.idleTimeout}</prop>
+                <prop key="hibernate.hikari.dataSourceClassName">${hibernate.hikari.dataSourceClassName}</prop>
+                <prop key="hibernate.hikari.dataSource.url">${hibernate.hikari.dataSource.url}</prop>
+                <prop key="hibernate.hikari.dataSource.user">${hibernate.hikari.dataSource.user}</prop>
+                <prop key="hibernate.hikari.dataSource.password">${hibernate.hikari.dataSource.password}</prop>
+
+                <!-- MYSQL OPTIMIZATION-->
+                <prop key="hibernate.hikari.dataSource.prepStmtCacheSize">${hibernate.hikari.dataSource.prepStmtCacheSize}</prop>
+                <prop key="hibernate.hikari.dataSource.prepStmtCacheSqlLimit">${hibernate.hikari.dataSource.prepStmtCacheSqlLimit}</prop>
+                <prop key="hibernate.hikari.dataSource.cachePrepStmts">${hibernate.hikari.dataSource.cachePrepStmts}</prop>
+                <!-- MYSQL OPTIMIZATION-->
+            </props>
+        </property>
+    </bean>
+
+    <!-- Hibernate Transaction Manager Definition -->
+    <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
+    <!--
+            <tx:advice id="txAdvice" transaction-manager="transactionManager">
+                <tx:attributes>
+                    <tx:method name="get" read-only="true"/>
+                    <tx:method name="*"/>
+                </tx:attributes>
+            </tx:advice>
+            <context:annotation-config/>
+            <bean id="transactionProxy" abstract="true"
+                  class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+                <property name="transactionManager" ref="transactionManager"/>
+                <property name="transactionAttributes">
+                    <props>
+                        <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                        <prop key="save*">PROPAGATION_REQUIRED</prop>
+                        <prop key="update*">PROPAGATION_REQUIRED</prop>
+                        <prop key="delete*">PROPAGATION_REQUIRED</prop>
+                    </props>
+                </property>
+            </bean>
+    -->
+</beans>

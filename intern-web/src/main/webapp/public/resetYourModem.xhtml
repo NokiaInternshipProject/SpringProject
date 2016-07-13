@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+    <style>
+        .blink {
+            animation: blink-animation 1s steps(5, start) infinite;
+            -webkit-animation: blink-animation 1s steps(5, start) infinite;
+        }
+        @keyframes blink-animation {
+            to {
+                visibility: hidden;
+            }
+        }
+        @-webkit-keyframes blink-animation {
+            to {
+                visibility: hidden;
+            }
+        }
+
+    </style>
+</h:head>
+
+
+<h:body>
+    <ui:composition template="/public/template/common/commonLayout.xhtml">
+        <ui:define name="main">
+            <h:form id="testIndex">
+
+                <script type="text/javascript">
+                    function blinker() {
+                        $('.blink_me').fadeOut(500);
+                        $('.blink_me').fadeIn(500);
+                    }
+
+                    setInterval(blinker, 1000);
+                </script>
+
+                <div>
+                    <p:outputLabel id="message2" style="font-weight: bold;"
+                                   value="#{loginBean.getMessageProperty('OperationInfo')}"></p:outputLabel>
+                    <div style="height: 20px"></div>
+                    <p:panel style="background: #3fb0e8;">
+                        <p:panel style="height:100px;background:#ffe000;color:#000 ">
+                            <div style="height: 20px"></div>
+
+
+                            <p:outputLabel id="message"  styleClass="blink_me" value="#{loginBean.getMessageProperty('ResetYourModemInfo')}">
+                            </p:outputLabel>
+                        </p:panel>
+                    </p:panel>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

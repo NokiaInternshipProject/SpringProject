@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>intern</artifactId>
+        <groupId>ali.firat.elvin.tr.portal.intern</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>intern-middleware</artifactId>
+    <groupId>ali.firat.elvin.tr.portal.intern.middleware</groupId>
+
+    <dependencies>
+        <dependency>
+            <groupId>ali.firat.elvin.tr.portal.intern.core</groupId>
+            <artifactId>intern-core</artifactId>
+            <version>${projectVersion}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxws</artifactId>
+            <version>${cxf.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-transports-http</artifactId>
+            <version>${cxf.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-security</artifactId>
+            <version>${cxf.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-ws-security</artifactId>
+            <version>${cxf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.wss4j</groupId>
+            <artifactId>wss4j-ws-security-dom</artifactId>
+            <version>2.1.4</version>
+        </dependency>
+
+    </dependencies>
+
+    <!--
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-codegen-plugin</artifactId>
+                <version>${cxf.version}</version>
+                <executions>
+                    <execution>
+                        <id>generate-sources</id>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <sourceRoot>${project.basedir}/src/main/java</sourceRoot>
+                            <wsdlOptions>
+                                <wsdlOption>
+                                    <wsdl>../docs/wsdl/spb/spb.wsdl</wsdl>
+                                    <extraargs>
+                                        <extraarg>-client</extraarg>
+                                    </extraargs>
+                                </wsdlOption>
+                            </wsdlOptions>
+                        </configuration>
+                        <goals>
+                            <goal>wsdl2java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+-->
+    <!-- <build>
+
+
+
+        <plugins>
+
+
+
+          <plugin>
+                <groupId>org.jvnet.jax-ws-commons</groupId>
+                <artifactId>jaxws-maven-plugin</artifactId>
+                <version>2.1</version>
+                <configuration>
+                    <sei>
+                        http://10.115.192.105:9001/SSOUserOperationsWebService/services/TTNETSSOUserCrudWebService?wsdl
+                    </sei>
+                    <wsdlUrls>
+                        <wsdlUrl>
+                            http://10.115.192.105:9001/SSOUserOperationsWebService/services/TTNETSSOUserCrudWebService?wsdl
+                        </wsdlUrl>
+                    </wsdlUrls>
+                    &lt;!&ndash; Keep generated files &ndash;&gt;
+                    <keep>true</keep>
+                    &lt;!&ndash; Package name &ndash;&gt;
+                    <packageName>ali.firat.elvin.tr.portall.internp.middleware.sso.tr.com.mrd.ssouseroperations</packageName>
+                    &lt;!&ndash; generated source files destination&ndash;&gt;
+                    <sourceDestDir>ali.firat.elvin.tr.portall.internp.middleware.sso.tr.com.mrd.ssouseroperations</sourceDestDir>
+                    &lt;!&ndash;<destDir>ali.firat.elvin.tr.portall.internp.middleware.sso.tr.com.mrd.ssouseroperations</destDir>&ndash;&gt;
+                </configuration>
+            </plugin>-->
+<!-- only one time
+
+            <plugin>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-codegen-plugin</artifactId>
+                <version>${cxf.version}</version>
+                <executions>
+                    <execution>
+                        <id>generate-sources</id>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <sourceRoot>${project.basedir}/src/main/java</sourceRoot>
+                            <wsdlOptions>
+                                <wsdlOption>
+                                    <wsdl>../docs/wsdl/session_mgmtHack.wsdl</wsdl>
+                                    <extraargs>
+                                        <extraarg>-client</extraarg>
+                                    </extraargs>
+                                </wsdlOption>
+                            </wsdlOptions>
+                        </configuration>
+                        <goals>
+                            <goal>wsdl2java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.jvnet.jax-ws-commons</groupId>
+                <artifactId>jaxws-maven-plugin</artifactId>
+                <version>2.1</version>
+                <configuration>
+                    <sei>
+                        http://tcscapp1:7403/nbi/testmodules?WSDL
+                    </sei>
+                    <wsdlUrls>
+                        <wsdlUrl>
+                            http://tcscapp1:7403/nbi/testmodules?WSDL
+                        </wsdlUrl>
+                    </wsdlUrls>
+
+                    <keep>true</keep>
+                    <verbose>true</verbose>
+
+                    <packageName>ali.firat.elvin.tr.portal.intern.middleware.smp</packageName>
+                    <bindingFiles>SMPwsdl</bindingFiles>
+
+                    <destDir>ali.firat.elvin.tr.portal.intern.middleware.smp</destDir>
+
+
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>-->
+
+    <repositories>
+        <repository>
+            <id>opennms</id>
+            <url>http://repo.opennms.org:8080/jradius</url>
+        </repository>
+    </repositories>
+
+</project>

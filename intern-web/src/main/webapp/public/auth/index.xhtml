@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <style>
+        .center {
+            margin: auto;
+            width: 60%;
+            border: 3px solid #73AD21;
+            padding: 10px;
+        }
+
+        .center-div {
+            position: absolute;
+            margin: auto;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: #ccc;
+            border-radius: 3px;
+        }
+
+    </style>
+</h:head>
+
+
+<h:body>
+    <ui:composition template="/public/template/common/commonLayout.xhtml">
+        <ui:define name="main">
+            <h:form id="testIndex">
+                <!--  todo poll u ac-->
+                <p:poll interval="3" listener="#{loginBean.isLoggedIn}" update="message"
+                        stop="#{loginBean.sessionInfo.counter > 100}"/>
+
+                <div>
+                    <p:outputLabel id="message2" style="font-weight: bold;"
+                                   value="test"></p:outputLabel>
+                    <div style="height: 20px"></div>
+                    <p:panel style="background: #3fb0e8;">
+                        <p:panel style="height:100px;background:#ffe000;color:#000 ">
+                            <div style="height: 20px"></div>
+                            <p:outputLabel id="message"
+                                           value="messageToCustomer"></p:outputLabel>
+                        </p:panel>
+                    </p:panel>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

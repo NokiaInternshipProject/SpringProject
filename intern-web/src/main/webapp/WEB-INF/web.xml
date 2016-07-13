@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+
+
+    <listener>
+        <listener-class>
+            ali.firat.elvin.tr.portal.intern.web.util.StartupListener
+        </listener-class>
+    </listener>
+
+
+    <listener>
+        <listener-class>
+            ali.firat.elvin.tr.portal.intern.web.util.SpringSessionListener
+        </listener-class>
+    </listener>
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:applicationContext-web.xml</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>locatorFactorySelector</param-name>
+        <param-value>classpath:applicationContext-web.xml</param-value>
+    </context-param>
+
+    <listener>
+        <listener-class>
+            org.springframework.web.context.ContextLoaderListener
+        </listener-class>
+    </listener>
+
+
+
+    <!-- Lets the bean definition file specify scopes of request
+         and session. -->
+    <listener>
+        <listener-class>
+            org.springframework.web.context.request.RequestContextListener
+        </listener-class>
+    </listener>
+    <!--
+
+        <filter>
+            <filter-name>authFilter</filter-name>
+            <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+        </filter>
+
+        <filter-mapping>
+            <filter-name>authFilter</filter-name>
+            <url-pattern>/public/auth/*</url-pattern>
+        </filter-mapping>-->
+
+
+        <welcome-file-list>
+            <welcome-file>public/auth/index.jsf</welcome-file>
+            <!--<welcome-file>/ttnetWifiFon/public/index.jsp</welcome-file>-->
+    </welcome-file-list>
+
+    <!--
+    <servlet>
+        <servlet-name>ActionServlet</servlet-name>
+        <servlet-class>ali.firat.elvin.tr.portal.intern.web.servlets.ActionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ActionServlet</servlet-name>
+        <url-pattern>/ActionServlet/*</url-pattern>
+    </servlet-mapping>
+-->
+
+    <!--JSF -->
+
+    <servlet>
+        <servlet-name>Faces Servlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>*.jsf</url-pattern>
+    </servlet-mapping>
+
+    <context-param>
+        <description>State saving method: 'client' or 'server' (=default). See JSF Specification 2.5.2</description>
+        <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+        <param-value>server</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>
+        <param-value>true</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>javax.faces.DEFAULT_SUFFIX</param-name>
+        <param-value>.xhtml</param-value>
+    </context-param>
+
+    <session-config>
+        <session-timeout>5</session-timeout>
+        <tracking-mode>COOKIE</tracking-mode>
+    </session-config>
+
+
+    <context-param>
+        <param-name>javax.faces.PROJECT_STAGE</param-name>
+        <param-value>Production</param-value>
+    </context-param>
+    <context-param>
+        <param-name>primefaces.THEME</param-name>
+        <param-value>bootstrap</param-value>
+    </context-param>
+    <listener>
+        <listener-class>com.sun.faces.config.ConfigureListener</listener-class>
+    </listener>
+
+
+    <!--
+    As seen the Listener is similar to my listener in that both receive the HttpSessionEvent
+     when a session is created anywhere within the application. The HttpSessionEventPublisher
+     class however converts this event to a Spring event. It publishes the event to the ApplicationContext.
+    -->
+    <listener>
+        <listener-class>
+            org.springframework.security.web.session.HttpSessionEventPublisher
+        </listener-class>
+    </listener>
+
+    <filter>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <filter-class>
+            org.springframework.web.filter.CharacterEncodingFilter
+        </filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <context-param>
+        <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+        <param-value>resources.application</param-value>
+    </context-param>
+
+    <error-page>
+        <location>/public/viewExpired.xhtml</location>
+        <exception-type>javax.faces.application.ViewExpiredException</exception-type>
+    </error-page>
+
+
+
+    <!--
+    <servlet>
+        <servlet-name>Push Servlet</servlet-name>
+        <servlet-class>org.primefaces.push.PushServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Push Servlet</servlet-name>
+        <url-pattern>/primepush/*</url-pattern>
+    </servlet-mapping> -->
+
+
+    <!--    <filter>
+            <filter-name>authFilter</filter-name>
+            <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+        </filter>
+
+        <filter-mapping>
+            <filter-name>authFilter</filter-name>
+            <url-pattern>/pages/tonLogin.xhtml</url-pattern>
+            &lt;!&ndash;<url-pattern>/pages/ssoSuccess</url-pattern>&ndash;&gt;
+        </filter-mapping>-->
+</web-app>
