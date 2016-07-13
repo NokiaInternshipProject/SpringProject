@@ -1,8 +1,0 @@
-<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:npm="http://npm.redback.com">
-    <soapenv:Header/>
-    <soapenv:Body>
-        <npm:getSubscriberSessionsByIPAddr soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
-            <String_1 xsi:type="xsd:string">X.X.X.X</String_1>
-        </npm:getSubscriberSessionsByIPAddr>
-    </soapenv:Body>
-</soapenv:Envelope>
