@@ -1,4 +1,4 @@
-package com.alcatel.npm;
+package ali.firat.npm;
 
 import org.apache.cxf.helpers.IOUtils;
 import org.apache.cxf.transport.Conduit;

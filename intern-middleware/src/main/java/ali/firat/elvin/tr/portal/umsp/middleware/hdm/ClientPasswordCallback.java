@@ -1,4 +1,4 @@
-package ali.firat.elvin.tr.portal.intern.middleware.hdm;
+package ali.firat.elvin.tr.portal.umsp.middleware.hdm;
 
 import org.apache.wss4j.common.ext.WSPasswordCallback;
 
