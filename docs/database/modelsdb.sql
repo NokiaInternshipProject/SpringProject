@@ -1,0 +1,48 @@
+CREATE TABLE `authors` (
+  `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `NAME` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `books` (
+  `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `NAME` varchar(150) DEFAULT NULL,
+  `YEAR` year(4) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `publishers` (
+  `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `NAME` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `genre` (
+  `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `NAME` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `book_author` (
+  `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `BOOKID` int(10) unsigned NOT NULL,
+  `AUTHORID` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `book_genre` (
+  `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `GENREID` int(10) unsigned NOT NULL,
+  `BOOKID` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `book_publisher` (
+  `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `BOOKID` int(10) unsigned NOT NULL,
+  `PUBLISHERID` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
