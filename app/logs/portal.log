@@ -565,3 +565,138 @@
 [ContainerBackgroundProcessor[StandardEngine[Catalina]]]ali.firat.elvin.tr.portal.intern.web.util.SpringSessionListener
   2016-07-13@15:22:15.631 INFO  - SESSION DESTROYED with Session ID = E2A51D7DC8A5006806708D6FE5484EDF
 
+[RMI TCP Connection(2)-127.0.0.1]org.hibernate.Version
+  2016-07-15@16:16:53.274 INFO  - HHH000412: Hibernate Core {5.1.0.Final}
+
+[RMI TCP Connection(2)-127.0.0.1]org.hibernate.cfg.Environment
+  2016-07-15@16:16:53.280 INFO  - HHH000206: hibernate.properties not found
+
+[RMI TCP Connection(2)-127.0.0.1]org.hibernate.cfg.Environment
+  2016-07-15@16:16:53.282 INFO  - HHH000021: Bytecode provider name : javassist
+
+[RMI TCP Connection(2)-127.0.0.1]org.hibernate.annotations.common.Version
+  2016-07-15@16:16:53.651 INFO  - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+
+[RMI TCP Connection(2)-127.0.0.1]org.hibernate.engine.jdbc.connections.internal.ConnectionProviderInitiator
+  2016-07-15@16:16:53.998 INFO  - HHH000130: Instantiating explicit connection provider: com.zaxxer.hikari.hibernate.HikariConnectionProvider
+
+[RMI TCP Connection(2)-127.0.0.1]com.zaxxer.hikari.HikariConfig
+  2016-07-15@16:16:54.754 DEBUG - HikariCP pool HikariPool-0 configuration:
+
+[RMI TCP Connection(2)-127.0.0.1]com.zaxxer.hikari.HikariConfig
+  2016-07-15@16:16:54.765 DEBUG - allowPoolSuspension.............false
+
+[RMI TCP Connection(2)-127.0.0.1]com.zaxxer.hikari.HikariConfig
+  2016-07-15@16:16:54.766 DEBUG - autoCommit......................true
+
+[RMI TCP Connection(2)-127.0.0.1]com.zaxxer.hikari.HikariConfig
+  2016-07-15@16:16:54.766 DEBUG - catalog.........................
+
+[RMI TCP Connection(2)-127.0.0.1]com.zaxxer.hikari.HikariConfig
+  2016-07-15@16:16:54.766 DEBUG - connectionCustomizer............com.zaxxer.hikari.AbstractHikariConfig$1@560d0bc3
+
+[RMI TCP Connection(2)-127.0.0.1]com.zaxxer.hikari.HikariConfig
+  2016-07-15@16:16:54.766 DEBUG - connectionCustomizerClassName...
+
+[RMI TCP Connection(2)-127.0.0.1]com.zaxxer.hikari.HikariConfig
+  2016-07-15@16:16:54.766 DEBUG - connectionInitSql...............
+
+[RMI TCP Connection(2)-127.0.0.1]com.zaxxer.hikari.HikariConfig
+  2016-07-15@16:16:54.766 DEBUG - connectionTestQuery.............
+
+[RMI TCP Connection(2)-127.0.0.1]com.zaxxer.hikari.HikariConfig
+  2016-07-15@16:16:54.767 DEBUG - connectionTimeout...............30000
+
+[RMI TCP Connection(2)-127.0.0.1]com.zaxxer.hikari.HikariConfig
+  2016-07-15@16:16:54.767 DEBUG - dataSource......................
+
+[RMI TCP Connection(2)-127.0.0.1]com.zaxxer.hikari.HikariConfig
+  2016-07-15@16:16:54.767 DEBUG - dataSourceClassName.............com.mysql.jdbc.jdbc2.optional.MysqlDataSource
+
+[RMI TCP Connection(2)-127.0.0.1]com.zaxxer.hikari.HikariConfig
+  2016-07-15@16:16:54.767 DEBUG - dataSourceJNDI..................
+
+[RMI TCP Connection(2)-127.0.0.1]com.zaxxer.hikari.HikariConfig
+  2016-07-15@16:16:54.767 DEBUG - dataSourceProperties............{user=root, password=<masked>, url=jdbc:mysql://localhost:3306/intern?setUnicode=true&characterEncoding=UTF-8&autoReconnect=true, prepStmtCacheSqlLimit=2048, cachePrepStmts=true, prepStmtCacheSize=250}
+
+[RMI TCP Connection(2)-127.0.0.1]com.zaxxer.hikari.HikariConfig
+  2016-07-15@16:16:54.767 DEBUG - driverClassName.................
+
+[RMI TCP Connection(2)-127.0.0.1]com.zaxxer.hikari.HikariConfig
+  2016-07-15@16:16:54.767 DEBUG - healthCheckProperties...........{}
+
+[RMI TCP Connection(2)-127.0.0.1]com.zaxxer.hikari.HikariConfig
+  2016-07-15@16:16:54.768 DEBUG - healthCheckRegistry.............
+
+[RMI TCP Connection(2)-127.0.0.1]com.zaxxer.hikari.HikariConfig
+  2016-07-15@16:16:54.768 DEBUG - idleTimeout.....................
+
+[RMI TCP Connection(2)-127.0.0.1]com.zaxxer.hikari.HikariConfig
+  2016-07-15@16:16:54.768 DEBUG - initializationFailFast..........
+
+[RMI TCP Connection(2)-127.0.0.1]com.zaxxer.hikari.HikariConfig
+  2016-07-15@16:16:54.768 DEBUG - isolateInternalQueries..........
+
+[RMI TCP Connection(2)-127.0.0.1]com.zaxxer.hikari.HikariConfig
+  2016-07-15@16:16:54.768 DEBUG - jdbc4ConnectionTest.............false
+
+[RMI TCP Connection(2)-127.0.0.1]com.zaxxer.hikari.HikariConfig
+  2016-07-15@16:16:54.769 DEBUG - jdbcUrl.........................
+
+[RMI TCP Connection(2)-127.0.0.1]com.zaxxer.hikari.HikariConfig
+  2016-07-15@16:16:54.769 DEBUG - leakDetectionThreshold..........0
+
+[RMI TCP Connection(2)-127.0.0.1]com.zaxxer.hikari.HikariConfig
+  2016-07-15@16:16:54.769 DEBUG - maxLifetime.....................1800000
+
+[RMI TCP Connection(2)-127.0.0.1]com.zaxxer.hikari.HikariConfig
+  2016-07-15@16:16:54.769 DEBUG - maximumPoolSize.................30
+
+[RMI TCP Connection(2)-127.0.0.1]com.zaxxer.hikari.HikariConfig
+  2016-07-15@16:16:54.769 DEBUG - metricRegistry..................
+
+[RMI TCP Connection(2)-127.0.0.1]com.zaxxer.hikari.HikariConfig
+  2016-07-15@16:16:54.769 DEBUG - minimumIdle.....................5
+
+[RMI TCP Connection(2)-127.0.0.1]com.zaxxer.hikari.HikariConfig
+  2016-07-15@16:16:54.769 DEBUG - password........................<masked>
+
+[RMI TCP Connection(2)-127.0.0.1]com.zaxxer.hikari.HikariConfig
+  2016-07-15@16:16:54.769 DEBUG - poolName........................HikariPool-0
+
+[RMI TCP Connection(2)-127.0.0.1]com.zaxxer.hikari.HikariConfig
+  2016-07-15@16:16:54.770 DEBUG - readOnly........................false
+
+[RMI TCP Connection(2)-127.0.0.1]com.zaxxer.hikari.HikariConfig
+  2016-07-15@16:16:54.770 DEBUG - registerMbeans..................false
+
+[RMI TCP Connection(2)-127.0.0.1]com.zaxxer.hikari.HikariConfig
+  2016-07-15@16:16:54.770 DEBUG - threadFactory...................
+
+[RMI TCP Connection(2)-127.0.0.1]com.zaxxer.hikari.HikariConfig
+  2016-07-15@16:16:54.770 DEBUG - transactionIsolation............
+
+[RMI TCP Connection(2)-127.0.0.1]com.zaxxer.hikari.HikariConfig
+  2016-07-15@16:16:54.770 DEBUG - username........................
+
+[RMI TCP Connection(2)-127.0.0.1]com.zaxxer.hikari.HikariConfig
+  2016-07-15@16:16:54.770 DEBUG - validationTimeout...............5000
+
+[RMI TCP Connection(2)-127.0.0.1]com.zaxxer.hikari.HikariDataSource
+  2016-07-15@16:16:54.778 INFO  - HikariCP pool HikariPool-0 is starting.
+
+[RMI TCP Connection(2)-127.0.0.1]org.hibernate.dialect.Dialect
+  2016-07-15@16:16:55.309 INFO  - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+
+[http-nio-8080-exec-1]ali.firat.elvin.tr.portal.intern.web.util.SpringSessionListener
+  2016-07-15@16:16:59.339 INFO  - SESSION CREATED with Session ID = [E1754037457CF4EA9442C0F40DB28F17]
+
+[http-nio-8080-exec-1]ali.firat.elvin.tr.portal.intern.web.util.SpringSessionListener
+  2016-07-15@16:16:59.340 DEBUG - numOfActiveHttpSessions = 1
+
+[http-nio-8080-exec-3]ali.firat.elvin.tr.portal.intern.web.util.SpringSessionListener
+  2016-07-15@16:16:59.549 INFO  - SESSION CREATED with Session ID = [34BA2A056D9FBF1B5096024891D37A03]
+
+[http-nio-8080-exec-3]ali.firat.elvin.tr.portal.intern.web.util.SpringSessionListener
+  2016-07-15@16:16:59.549 DEBUG - numOfActiveHttpSessions = 2
+
