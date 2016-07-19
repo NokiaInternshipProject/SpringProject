@@ -5,9 +5,40 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core">
+<p:growl id="messages"/>
+<div class="navbar" style="margin: 0px;">
+    <div class="navbar navbar-inverse navbar-fixed-top" style="margin-bottom: 0px;">
+        <div class="container" style="text-align: center;">
+            <div class="btn-group">
+                <p:button style="background:transparent; color: white; border-color:white; border-radius: 20px;" value="Homepage"></p:button>
+                <p:button style="background:transparent; color: white; border-color:white; border-radius: 20px;" value="All Books"></p:button>
+                <p:button style="background:transparent; color: white; border-color:white; border-radius: 20px;" styleClass="navbar-btn" value="Genres" ></p:button>
+                <p:button style="background:transparent; color: white; border-color:white; border-radius: 20px;" styleClass="navbar-btn" value="Authors" ></p:button>
+                <p:button style="background:transparent; color: white; border-color:white; border-radius: 20px;" styleClass="navbar-btn" value="Publishers" ></p:button>
+                <p:button style="background:transparent; color: white; border-color:white; border-radius: 20px;" styleClass="navbar-btn" value="Add Book Fastly" ></p:button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="navbar" style="margin: 0px; border: none;">
+    <div class="navbar navbar-default"
+         style="border-radius:0px; width: 100%;margin: 0px;border: none;background-color: lightgray;">
+        <div class="container" style="text-align: center;">
+            <div class="row">
+                <div class="col-xs-offset-2 col-xs-6" style="margin-top:8px; ">
+                    <p:inputText style="border-color:black;border-radius:15px;" class="form-control"
+                                 placeholder="Aramak istediğiniz kelime ?"/>
+                </div>
+                <div class="col-xs-2 col-xs-pull-0" style="margin-top: 5px;">
+                    <p:commandButton
+                            style="border-style:double;border-radius: 25px;border-color: black; color: black; background: white;"
+                            type="submit" class="btn btn-block" value="Ara" icon="ui-icon-search"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<h:form>
-</h:form>
 
 </html>
 

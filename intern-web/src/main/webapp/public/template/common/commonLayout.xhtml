@@ -8,11 +8,13 @@
 <f:view contentType="text/html" locale="tr">
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <title>I am Title</title>
+        <title>Book Automation</title>
         <h:outputScript library="javax.faces" name="jsf.js"/>
         <h:outputScript library="primefaces" name="jquery/jquery.js"/>
         <h:outputStylesheet library="primefaces" name="primefaces.css"/>
         <h:outputStylesheet library="primefaces-bootstrap" name="theme.css"/>
+        <h:outputStylesheet library="webjars" name="bootstrap/3.3.6/css/bootstrap.min-jsf.css" />
+        <h:outputScript library="webjars" name="jquery/1.11.1/jquery.js" />
     </h:head>
 
     <h:body>
@@ -23,22 +25,11 @@
                 <ui:include src="/public/template/common/commonHeader.xhtml"/>
             </ui:insert>
 
-            <p:spacer height="30px"></p:spacer>
-
-            <p:panel style="width:95%;">
-                <figure>
-                    <img src="${request.contextPath}/resources/alu/img/Turkcell2.png" alt="Turkcell"
-                         style="margin-left: -30px"/>
-
-                </figure>
-
                 <div id="main">
                     <ui:insert name="main">
                         <ui:include src="/public/template/common/commonMain.xhtml"/>
                     </ui:insert>
                 </div>
-
-            </p:panel>
 
             <ui:insert name="footer">
                 <ui:include src="/public/template/common/commonFooter.xhtml"/>

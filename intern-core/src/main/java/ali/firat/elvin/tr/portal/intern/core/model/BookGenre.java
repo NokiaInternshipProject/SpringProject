@@ -1,18 +1,23 @@
 package ali.firat.elvin.tr.portal.intern.core.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.List;
+
+import static javax.persistence.GenerationType.IDENTITY;
 
 /**
  * Created by yektan on 15.07.2016.
  */
 @Entity
 @Table(name = "book_genre", schema = "intern", catalog = "")
-public class BookGenre {
+public class BookGenre implements Serializable {
     private int id;
     private int genreid;
     private int bookid;
 
     @Id
+    @GeneratedValue(strategy = IDENTITY)
     @Column(name = "ID")
     public int getId() {
         return id;
@@ -55,6 +60,26 @@ public class BookGenre {
 
         return true;
     }
+
+    private List<Books> book;
+    @ManyToMany
+    @JoinColumn(name = "BOOKID", referencedColumnName = "ID", nullable = false)
+    public List<Books> getBooks() {
+        return book;
+    }
+    public void setBooks(List<Books> book) {
+        this.book = book;
+    }
+
+
+    private List<Genre> genre;
+    @ManyToMany
+    @JoinColumn(name = "AUTHORID", referencedColumnName = "ID", nullable = false)
+    public List<Genre> getGenres() {return genre;}
+    public void setGenres(List<Genre> genre) {
+        this.genre = genre;
+    }
+
 
     @Override
     public int hashCode() {

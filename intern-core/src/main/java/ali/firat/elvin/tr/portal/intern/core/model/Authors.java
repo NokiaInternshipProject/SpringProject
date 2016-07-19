@@ -1,19 +1,25 @@
 package ali.firat.elvin.tr.portal.intern.core.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import org.springframework.jmx.export.annotation.ManagedAttribute;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.List;
+import static javax.persistence.GenerationType.IDENTITY;
+
 
 /**
  * Created by yektan on 15.07.2016.
  */
 @Entity
-public class Authors {
+@Table(name = "authors", schema = "intern", catalog = "")
+public class Authors implements Serializable {
     private int id;
     private String name;
+    private String surname;
 
     @Id
+    @GeneratedValue(strategy = IDENTITY)
     @Column(name = "ID")
     public int getId() {
         return id;
@@ -21,6 +27,14 @@ public class Authors {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    @Basic
+    @Column(name = "SURNAME")
+    public String getSurname(){return surname; }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     @Basic
@@ -45,6 +59,18 @@ public class Authors {
 
         return true;
     }
+
+    private List<BookAuthor> bookAuthor;
+
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "authors")
+    public List<BookAuthor> getBookAuthor(){return  bookAuthor;}
+
+    public void setBookAuthor(List<BookAuthor> bookAuthor) {
+        this.bookAuthor = bookAuthor;
+    }
+
+
+
 
     @Override
     public int hashCode() {

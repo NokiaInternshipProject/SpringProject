@@ -1,9 +1,10 @@
 package ali.firat.elvin.tr.portal.intern.core.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+
+import java.util.List;
+
+import static javax.persistence.GenerationType.IDENTITY;
 
 /**
  * Created by yektan on 15.07.2016.
@@ -14,6 +15,7 @@ public class Publishers {
     private String name;
 
     @Id
+    @GeneratedValue(strategy = IDENTITY)
     @Column(name = "ID")
     public int getId() {
         return id;
@@ -45,6 +47,16 @@ public class Publishers {
 
         return true;
     }
+
+    private BookPublisher bookPublisher;
+
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    public BookPublisher getBookPublisher(){return  bookPublisher;}
+
+    public void setBookPublisher(BookPublisher bookPublisher) {
+        this.bookPublisher = bookPublisher;
+    }
+
 
     @Override
     public int hashCode() {
