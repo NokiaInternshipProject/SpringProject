@@ -48,15 +48,6 @@ public class Publishers {
         return true;
     }
 
-    private BookPublisher bookPublisher;
-
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    public BookPublisher getBookPublisher(){return  bookPublisher;}
-
-    public void setBookPublisher(BookPublisher bookPublisher) {
-        this.bookPublisher = bookPublisher;
-    }
-
 
     @Override
     public int hashCode() {
