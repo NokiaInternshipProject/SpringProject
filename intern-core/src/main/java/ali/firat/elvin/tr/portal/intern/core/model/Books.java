@@ -1,5 +1,7 @@
 package ali.firat.elvin.tr.portal.intern.core.model;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
@@ -9,7 +11,8 @@ import static javax.persistence.GenerationType.IDENTITY;
  * Created by yektan on 15.07.2016.
  */
 @Entity
-@Table(name = "books", schema = "intern", catalog = "")
+@ManagedBean(name = "book")
+@Table(name = "books", schema = "intern")
 public class Books implements Serializable {
     private int id;
     private String name;
@@ -105,5 +108,10 @@ public class Books implements Serializable {
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + year;
         return result;
+    }
+
+    @Override
+    public String toString(){
+        return "id="+id+", name="+name+", year="+year+", publisherid="+publisherid;
     }
 }

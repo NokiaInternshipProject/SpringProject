@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+    <title>Ekle</title>
+</h:head>
+<h:body>
+    <h1>Add a Person</h1>
+    <h:form>
+        <table>
+            <tr>
+                <td><label>Name</label></td>
+                <td><h:inputText id="name" value="#{book.name}"></h:inputText>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Publisherid</label></td>
+                <td><h:inputText id="country" value="#{book.publisherid}"></h:inputText>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Year</label></td>
+                <td><h:inputText id="year" value="#{book.year}"></h:inputText>
+                </td>
+            </tr>
+            <tr>
+                <td><h:commandButton
+                        action="#{bookService.save(book)}" value="Add Person"></h:commandButton>
+                </td>
+            </tr>
+
+        </table>
+
+    </h:form>
+</h:body>
+</html>

@@ -10,12 +10,12 @@
     <div class="navbar navbar-inverse navbar-fixed-top" style="margin-bottom: 0px;">
         <div class="container" style="text-align: center;">
             <div class="btn-group">
-                <p:button style="background:transparent; color: white; border-color:white; border-radius: 20px;" value="Homepage"></p:button>
-                <p:button style="background:transparent; color: white; border-color:white; border-radius: 20px;" value="All Books"></p:button>
-                <p:button style="background:transparent; color: white; border-color:white; border-radius: 20px;" styleClass="navbar-btn" value="Genres" ></p:button>
-                <p:button style="background:transparent; color: white; border-color:white; border-radius: 20px;" styleClass="navbar-btn" value="Authors" ></p:button>
-                <p:button style="background:transparent; color: white; border-color:white; border-radius: 20px;" styleClass="navbar-btn" value="Publishers" ></p:button>
-                <p:button style="background:transparent; color: white; border-color:white; border-radius: 20px;" styleClass="navbar-btn" value="Add Book Fastly" ></p:button>
+                <p:commandButton action="#{navigatorBean.forwardToPage('/',false,true)}"  style="background:transparent; color: white; border-color:white; border-radius: 20px;" value="Homepage"/>
+                <p:commandButton action="#{navigatorBean.forwardToPage('/public/auth/booklist.jsf',false,true)}" style="background:transparent; color: white; border-color:white; border-radius: 20px;" value="All Books"/>
+                <p:commandButton style="background:transparent; color: white; border-color:white; border-radius: 20px;" styleClass="navbar-btn" value="Genres" />
+                <p:commandButton style="background:transparent; color: white; border-color:white; border-radius: 20px;" styleClass="navbar-btn" value="Authors" />
+                <p:commandButton style="background:transparent; color: white; border-color:white; border-radius: 20px;" styleClass="navbar-btn" value="Publishers" />
+                <p:commandButton style="background:transparent; color: white; border-color:white; border-radius: 20px;" styleClass="navbar-btn" value="Add Book Fastly" />
             </div>
         </div>
     </div>

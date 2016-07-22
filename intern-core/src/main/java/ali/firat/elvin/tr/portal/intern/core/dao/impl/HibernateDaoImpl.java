@@ -62,7 +62,7 @@ public class HibernateDaoImpl <T, Id extends Serializable> implements HibernateD
     @SuppressWarnings("unchecked")
     public Id save(T object) throws DaoException {
         Id id = (Id) getCurrentSession().save(object);
-        this.getCurrentSession().evict(object);
+        this.getCurrentSession().persist(object);
         return id;
     }
 
