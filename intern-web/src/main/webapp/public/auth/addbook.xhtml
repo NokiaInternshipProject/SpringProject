@@ -10,7 +10,9 @@
     <title>Ekle</title>
 </h:head>
 <h:body>
-    <h1>Add a Person</h1>
+    <ui:composition template="/public/template/common/commonLayout.xhtml">
+    <ui:define name="main">
+    <h1>Add a Book</h1>
     <h:form>
         <table>
             <tr>
@@ -37,5 +39,7 @@
         </table>
 
     </h:form>
+    </ui:define>
+    </ui:composition>
 </h:body>
 </html>

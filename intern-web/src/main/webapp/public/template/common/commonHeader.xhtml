@@ -4,18 +4,33 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
 <p:growl id="messages"/>
 <div class="navbar" style="margin: 0px;">
     <div class="navbar navbar-inverse navbar-fixed-top" style="margin-bottom: 0px;">
         <div class="container" style="text-align: center;">
             <div class="btn-group">
-                <p:commandButton action="#{navigatorBean.forwardToPage('/',false,true)}"  style="background:transparent; color: white; border-color:white; border-radius: 20px;" value="Homepage"/>
-                <p:commandButton action="#{navigatorBean.forwardToPage('/public/auth/booklist.jsf',false,true)}" style="background:transparent; color: white; border-color:white; border-radius: 20px;" value="All Books"/>
-                <p:commandButton style="background:transparent; color: white; border-color:white; border-radius: 20px;" styleClass="navbar-btn" value="Genres" />
-                <p:commandButton style="background:transparent; color: white; border-color:white; border-radius: 20px;" styleClass="navbar-btn" value="Authors" />
-                <p:commandButton style="background:transparent; color: white; border-color:white; border-radius: 20px;" styleClass="navbar-btn" value="Publishers" />
-                <p:commandButton style="background:transparent; color: white; border-color:white; border-radius: 20px;" styleClass="navbar-btn" value="Add Book Fastly" />
+                <h:form>
+                    <p:commandButton action="${navigatorBean.forwardToPage('/public/auth/index.jsf',false,true)}"
+                                     style="background:transparent; color: white; border-color:white; border-radius: 10px;"
+                                     value="Homepage"/>
+                    <p:commandButton action="${navigatorBean.forwardToPage('/public/auth/booklist.jsf',false,true)}"
+                                     style="background:transparent; color: white; border-color:white; border-radius: 10px;"
+                                     value="All Books"/>
+                    <p:commandButton
+                            style="background:transparent; color: white; border-color:white; border-radius: 10px;"
+                            styleClass="navbar-btn" value="Genres"/>
+                    <p:commandButton
+                            style="background:transparent; color: white; border-color:white; border-radius: 10px;"
+                            styleClass="navbar-btn" value="Authors"/>
+                    <p:commandButton
+                            style="background:transparent; color: white; border-color:white; border-radius: 10px;"
+                            styleClass="navbar-btn" value="Publishers"/>
+                    <p:commandButton action="${navigatorBean.forwardToPage('/public/auth/addbook.jsf',false,true)}"
+                                     style="background:transparent; color: white; border-color:white; border-radius: 10px;"
+                                     styleClass="navbar-btn" value="Add Book Fastly"/>
+                </h:form>
             </div>
         </div>
     </div>
@@ -38,8 +53,6 @@
         </div>
     </div>
 </div>
-
-
 </html>
 
 
