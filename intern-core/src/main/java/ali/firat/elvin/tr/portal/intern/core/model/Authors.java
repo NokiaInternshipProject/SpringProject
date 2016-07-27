@@ -1,26 +1,25 @@
 package ali.firat.elvin.tr.portal.intern.core.model;
 
-import org.springframework.jmx.export.annotation.ManagedAttribute;
+import net.sf.ehcache.config.PersistenceConfiguration;
 
+import javax.faces.bean.ManagedBean;
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.List;
-import static javax.persistence.GenerationType.IDENTITY;
-
+import java.util.Collection;
 
 /**
- * Created by yektan on 15.07.2016.
+ * Created by yektan on 26.07.2016.
  */
 @Entity
-@Table(name = "authors", schema = "intern", catalog = "")
-public class Authors implements Serializable {
+@ManagedBean(name = "author")
+public class Authors {
     private int id;
     private String name;
     private String surname;
+    private Collection<BookAuthor> bookAuthorsById;
 
     @Id
-    @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "ID")
+    @Column(name = "ID", nullable = false)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     public int getId() {
         return id;
     }
@@ -30,21 +29,23 @@ public class Authors implements Serializable {
     }
 
     @Basic
-    @Column(name = "SURNAME")
-    public String getSurname(){return surname; }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    @Basic
-    @Column(name = "NAME")
+    @Column(name = "NAME", nullable = true, length = 50)
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Basic
+    @Column(name = "SURNAME", nullable = true, length = 50)
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     @Override
@@ -56,26 +57,25 @@ public class Authors implements Serializable {
 
         if (id != authors.id) return false;
         if (name != null ? !name.equals(authors.name) : authors.name != null) return false;
+        if (surname != null ? !surname.equals(authors.surname) : authors.surname != null) return false;
 
         return true;
     }
-
-    private List<BookAuthor> bookAuthor;
-
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "authors")
-    public List<BookAuthor> getBookAuthor(){return  bookAuthor;}
-
-    public void setBookAuthor(List<BookAuthor> bookAuthor) {
-        this.bookAuthor = bookAuthor;
-    }
-
-
-
 
     @Override
     public int hashCode() {
         int result = id;
         result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (surname != null ? surname.hashCode() : 0);
         return result;
+    }
+
+    @OneToMany(mappedBy = "authorsByAuthorid")
+    public Collection<BookAuthor> getBookAuthorsById() {
+        return bookAuthorsById;
+    }
+
+    public void setBookAuthorsById(Collection<BookAuthor> bookAuthorsById) {
+        this.bookAuthorsById = bookAuthorsById;
     }
 }

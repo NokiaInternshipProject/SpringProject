@@ -1,23 +1,22 @@
 package ali.firat.elvin.tr.portal.intern.core.model;
 
+import javax.faces.bean.ManagedBean;
 import javax.persistence.*;
-
-import java.io.Serializable;
-import java.util.List;
-
-import static javax.persistence.GenerationType.IDENTITY;
+import java.util.Collection;
 
 /**
- * Created by yektan on 15.07.2016.
+ * Created by yektan on 26.07.2016.
  */
 @Entity
-public class Genre implements Serializable{
+@ManagedBean(name = "genre")
+public class Genre {
     private int id;
     private String name;
+    private Collection<BookGenre> bookGenresById;
 
     @Id
-    @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "ID")
+    @Column(name = "ID", nullable = false)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     public int getId() {
         return id;
     }
@@ -27,7 +26,7 @@ public class Genre implements Serializable{
     }
 
     @Basic
-    @Column(name = "NAME")
+    @Column(name = "NAME", nullable = true, length = 100)
     public String getName() {
         return name;
     }
@@ -49,17 +48,19 @@ public class Genre implements Serializable{
         return true;
     }
 
-    private List<BookGenre> bookGenre;
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "genres")
-    public List<BookGenre> getBookGenre(){return  bookGenre;}
-    public void setBookGenre(List<BookGenre> bookGenre) {
-        this.bookGenre = bookGenre;
-    }
-
     @Override
     public int hashCode() {
         int result = id;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
+    }
+
+    @OneToMany(mappedBy = "genreByGenreid")
+    public Collection<BookGenre> getBookGenresById() {
+        return bookGenresById;
+    }
+
+    public void setBookGenresById(Collection<BookGenre> bookGenresById) {
+        this.bookGenresById = bookGenresById;
     }
 }

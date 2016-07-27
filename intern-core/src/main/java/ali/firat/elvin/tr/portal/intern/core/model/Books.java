@@ -3,25 +3,28 @@ package ali.firat.elvin.tr.portal.intern.core.model;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.persistence.*;
-import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
-import static javax.persistence.GenerationType.IDENTITY;
 
 /**
- * Created by yektan on 15.07.2016.
+ * Created by yektan on 26.07.2016.
  */
 @Entity
 @ManagedBean(name = "book")
-@Table(name = "books", schema = "intern")
-public class Books implements Serializable {
+public class Books {
+
+    @ManagedProperty(value = "#{param.bookID}")
     private int id;
     private String name;
-    private int year;
+    private Integer year;
     private int publisherid;
+    private Publishers publishersByPublisherid;
+    private List<BookAuthor> bookAuthorsById;
+    private List<BookGenre> bookGenresById;
 
     @Id
-    @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "ID",unique = true,nullable = false)
+    @Column(name = "ID", nullable = false)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     public int getId() {
         return id;
     }
@@ -31,15 +34,7 @@ public class Books implements Serializable {
     }
 
     @Basic
-    @Column(name = "PUBLISHERID")
-    public int getPublisherid(){return publisherid;}
-
-    public void setPublisherid(int publisherid) {
-        this.publisherid = publisherid;
-    }
-
-    @Basic
-    @Column(name = "NAME")
+    @Column(name = "NAME", nullable = true, length = 150)
     public String getName() {
         return name;
     }
@@ -49,13 +44,23 @@ public class Books implements Serializable {
     }
 
     @Basic
-    @Column(name = "YEAR")
-    public int getYear() {
+    @Column(name = "YEAR", nullable = true)
+    public Integer getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(Integer year) {
         this.year = year;
+    }
+
+    @Basic
+    @Column(name = "PUBLISHERID")
+    public int getPublisherid() {
+        return publisherid;
+    }
+
+    public void setPublisherid(int publisherid) {
+        this.publisherid = publisherid;
     }
 
     @Override
@@ -66,52 +71,47 @@ public class Books implements Serializable {
         Books books = (Books) o;
 
         if (id != books.id) return false;
-        if (year != books.year) return false;
+        if (publisherid != books.publisherid) return false;
         if (name != null ? !name.equals(books.name) : books.name != null) return false;
+        if (year != null ? !year.equals(books.year) : books.year != null) return false;
 
         return true;
-    }
-
-    private List<BookAuthor> bookAuthor;
-
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "books")
-    public List<BookAuthor> getBookAuthor(){return  bookAuthor;}
-
-    public void setBookAuthor(List<BookAuthor> bookAuthor) {
-        this.bookAuthor = bookAuthor;
-    }
-
-
-    private List<BookGenre> bookGenre;
-
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "books")
-    public List<BookGenre> getBookGenre(){return  bookGenre;}
-    public void setBookGenre(List<BookGenre> bookGenre) {
-        this.bookGenre = bookGenre;
-    }
-
-
-    private Publishers publisher;
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "PUBLISHERID",referencedColumnName = "ID",insertable = false,updatable = false)
-    public Publishers getPublisher() {
-        return publisher;
-    }
-
-    public void setPublisher(Publishers publisher) {
-        this.publisher = publisher;
     }
 
     @Override
     public int hashCode() {
         int result = id;
         result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + year;
+        result = 31 * result + (year != null ? year.hashCode() : 0);
+        result = 31 * result + publisherid;
         return result;
     }
 
-    @Override
-    public String toString(){
-        return "id="+id+", name="+name+", year="+year+", publisherid="+publisherid;
+    @ManyToOne
+    @JoinColumn(name = "PUBLISHERID", referencedColumnName = "ID", nullable = true,insertable = false,updatable = false)
+    public Publishers getPublishersByPublisherid() {
+        return publishersByPublisherid;
+    }
+
+    public void setPublishersByPublisherid(Publishers publishersByPublisherid) {
+        this.publishersByPublisherid = publishersByPublisherid;
+    }
+
+    @OneToMany(mappedBy = "booksByBookid")
+    public List<BookAuthor> getBookAuthorsById() {
+        return bookAuthorsById;
+    }
+
+    public void setBookAuthorsById(List<BookAuthor> bookAuthorsById) {
+        this.bookAuthorsById = bookAuthorsById;
+    }
+
+    @OneToMany(mappedBy = "booksByBookid")
+    public List<BookGenre> getBookGenresById() {
+        return bookGenresById;
+    }
+
+    public void setBookGenresById(List<BookGenre> bookGenresById) {
+        this.bookGenresById = bookGenresById;
     }
 }

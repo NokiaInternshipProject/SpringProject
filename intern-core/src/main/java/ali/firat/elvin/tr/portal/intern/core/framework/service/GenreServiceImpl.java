@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.annotation.PostConstruct;
 
 @org.springframework.stereotype.Service("genreService")
-public class GenreServiceImpl extends HibernateServiceImpl<Genre,Long> {
+public class GenreServiceImpl extends HibernateServiceImpl<Genre,Integer> {
     @Autowired
     GenreDaoImpl genreDao;
 
@@ -17,7 +17,7 @@ public class GenreServiceImpl extends HibernateServiceImpl<Genre,Long> {
 
     @PostConstruct
     public void init() {
-        setHibernateDao((HibernateDaoImpl<Genre,Long>)((HibernateDaoImpl<?,?>)genreDao));
+        setHibernateDao((HibernateDaoImpl<Genre,Integer>)((HibernateDaoImpl<?,?>)genreDao));
     }
 }
 

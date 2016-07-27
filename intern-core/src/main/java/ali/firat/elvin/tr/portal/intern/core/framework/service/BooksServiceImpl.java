@@ -5,10 +5,9 @@ import ali.firat.elvin.tr.portal.intern.core.model.Books;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
 
 @Service("bookService")
-public class BooksServiceImpl extends HibernateServiceImpl<Books, Long> {
+public class BooksServiceImpl extends HibernateServiceImpl<Books, Integer> {
 
     @Autowired
     BooksDaoImpl booksDao;
@@ -19,6 +18,6 @@ public class BooksServiceImpl extends HibernateServiceImpl<Books, Long> {
 
     @PostConstruct
     public void init() {
-        setHibernateDao((HibernateDaoImpl<Books,Long> )((HibernateDaoImpl<?,?>)booksDao));
+        setHibernateDao((HibernateDaoImpl<Books,Integer> )((HibernateDaoImpl<?,?>)booksDao));
     }
 }

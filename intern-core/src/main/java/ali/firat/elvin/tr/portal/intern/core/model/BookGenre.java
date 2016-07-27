@@ -1,24 +1,22 @@
 package ali.firat.elvin.tr.portal.intern.core.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.List;
-
-import static javax.persistence.GenerationType.IDENTITY;
 
 /**
- * Created by yektan on 15.07.2016.
+ * Created by yektan on 26.07.2016.
  */
 @Entity
 @Table(name = "book_genre", schema = "intern", catalog = "")
-public class BookGenre implements Serializable {
+public class BookGenre {
     private int id;
     private int genreid;
     private int bookid;
+    private Books booksByBookid;
+    private Genre genreByGenreid;
 
     @Id
-    @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "ID")
+    @Column(name = "ID", nullable = false)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     public int getId() {
         return id;
     }
@@ -28,7 +26,7 @@ public class BookGenre implements Serializable {
     }
 
     @Basic
-    @Column(name = "GENREID")
+    @Column(name = "GENREID", nullable = false,insertable = false,updatable = false)
     public int getGenreid() {
         return genreid;
     }
@@ -38,7 +36,7 @@ public class BookGenre implements Serializable {
     }
 
     @Basic
-    @Column(name = "BOOKID")
+    @Column(name = "BOOKID", nullable = false,insertable = false,updatable = false)
     public int getBookid() {
         return bookid;
     }
@@ -61,31 +59,31 @@ public class BookGenre implements Serializable {
         return true;
     }
 
-    private List<Books> book;
-    @ManyToMany
-    @JoinColumn(name = "BOOKID", referencedColumnName = "ID", nullable = false)
-    public List<Books> getBooks() {
-        return book;
-    }
-    public void setBooks(List<Books> book) {
-        this.book = book;
-    }
-
-
-    private List<Genre> genre;
-    @ManyToMany
-    @JoinColumn(name = "AUTHORID", referencedColumnName = "ID", nullable = false)
-    public List<Genre> getGenres() {return genre;}
-    public void setGenres(List<Genre> genre) {
-        this.genre = genre;
-    }
-
-
     @Override
     public int hashCode() {
         int result = id;
         result = 31 * result + genreid;
         result = 31 * result + bookid;
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "BOOKID", referencedColumnName = "ID", nullable = false)
+    public Books getBooksByBookid() {
+        return booksByBookid;
+    }
+
+    public void setBooksByBookid(Books booksByBookid) {
+        this.booksByBookid = booksByBookid;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "GENREID", referencedColumnName = "ID", nullable = false)
+    public Genre getGenreByGenreid() {
+        return genreByGenreid;
+    }
+
+    public void setGenreByGenreid(Genre genreByGenreid) {
+        this.genreByGenreid = genreByGenreid;
     }
 }

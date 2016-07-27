@@ -1,4 +1,4 @@
-package ali.firat.elvin.tr.portal.intern.web.bean;
+package ali.firat.elvin.tr.portal.intern.web.views;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;

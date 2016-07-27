@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Ekle</title>
+</h:head>
+<h:body>
+    <ui:composition template="/public/template/common/commonLayout.xhtml">
+        <ui:define name="main">
+            <div class="container" style="margin:100px;">
+                <h:form styleClass="form-horizontal">
+                    <div class="col-md-offset-3 col-md-6">
+                        <div class="form-group-lg">
+                            <p:inputText style="border-radius: 25px;" styleClass="form-control" placeholder="Publisher Name"
+                                         value="#{publisher.name}"/>
+                            <br/>
+                        </div>
+                        <div class="col-md-offset-2 col-md-8">
+                            <p:commandButton value="Add Publisher" style="border-radius: 25px;" icon="ui-icon-check"
+                                             styleClass="btn btn-lg btn-success btn-block"
+                                             action="#{publisherBean.createPublisher(publisher)}"/>
+                        </div>
+                    </div>
+                </h:form>
+            </div>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

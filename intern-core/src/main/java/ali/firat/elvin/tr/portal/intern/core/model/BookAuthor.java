@@ -1,27 +1,22 @@
 package ali.firat.elvin.tr.portal.intern.core.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-import static javax.persistence.GenerationType.IDENTITY;
-
 
 /**
- * Created by yektan on 15.07.2016.
+ * Created by yektan on 26.07.2016.
  */
 @Entity
 @Table(name = "book_author", schema = "intern", catalog = "")
-public class BookAuthor implements Serializable {
+public class BookAuthor {
     private int id;
     private int bookid;
     private int authorid;
+    private Authors authorsByAuthorid;
+    private Books booksByBookid;
 
     @Id
-    @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "ID")
+    @Column(name = "ID", nullable = false)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     public int getId() {
         return id;
     }
@@ -31,7 +26,7 @@ public class BookAuthor implements Serializable {
     }
 
     @Basic
-    @Column(name = "BOOKID")
+    @Column(name = "BOOKID", nullable = false,insertable = false,updatable = false)
     public int getBookid() {
         return bookid;
     }
@@ -41,7 +36,7 @@ public class BookAuthor implements Serializable {
     }
 
     @Basic
-    @Column(name = "AUTHORID")
+    @Column(name = "AUTHORID", nullable = false,insertable = false,updatable = false)
     public int getAuthorid() {
         return authorid;
     }
@@ -64,36 +59,31 @@ public class BookAuthor implements Serializable {
         return true;
     }
 
-    private List<Books> book;
-
-    @ManyToMany
-    @JoinColumn(name = "BOOKID", referencedColumnName = "ID", nullable = false)
-    public List<Books> getBooks() {
-        return book;
-    }
-
-    public void setBooks(List<Books> book) {
-        this.book = book;
-    }
-
-
-    private List<Authors> author;
-
-    @ManyToMany
-    @JoinColumn(name = "AUTHORID", referencedColumnName = "ID", nullable = false)
-    public List<Authors> getAuthors() {
-        return author;
-    }
-
-    public void setAuthors(List<Authors> author) {
-        this.author = author;
-    }
-
     @Override
     public int hashCode() {
         int result = id;
         result = 31 * result + bookid;
         result = 31 * result + authorid;
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "AUTHORID", referencedColumnName = "ID", nullable = false)
+    public Authors getAuthorsByAuthorid() {
+        return authorsByAuthorid;
+    }
+
+    public void setAuthorsByAuthorid(Authors authorsByAuthorid) {
+        this.authorsByAuthorid = authorsByAuthorid;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "BOOKID", referencedColumnName = "ID", nullable = false)
+    public Books getBooksByBookid() {
+        return booksByBookid;
+    }
+
+    public void setBooksByBookid(Books booksByBookid) {
+        this.booksByBookid = booksByBookid;
     }
 }

@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.annotation.PostConstruct;
 
 @org.springframework.stereotype.Service("authorService")
-public class AuthorServiceImpl extends HibernateServiceImpl<Authors,Long> {
+public class AuthorServiceImpl extends HibernateServiceImpl<Authors,Integer> {
     @Autowired
     AuthorsDaoImpl authorsDao;
 
@@ -17,6 +17,6 @@ public class AuthorServiceImpl extends HibernateServiceImpl<Authors,Long> {
 
     @PostConstruct
     public void init() {
-        setHibernateDao((HibernateDaoImpl<Authors,Long>)((HibernateDaoImpl<?,?>)authorsDao));
+        setHibernateDao((HibernateDaoImpl<Authors,Integer>)((HibernateDaoImpl<?,?>)authorsDao));
     }
 }

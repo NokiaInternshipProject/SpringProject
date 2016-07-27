@@ -1,22 +1,23 @@
 package ali.firat.elvin.tr.portal.intern.core.model;
 
+import javax.faces.bean.ManagedBean;
 import javax.persistence.*;
-
+import java.util.Collection;
 import java.util.List;
 
-import static javax.persistence.GenerationType.IDENTITY;
-
 /**
- * Created by yektan on 15.07.2016.
+ * Created by yektan on 26.07.2016.
  */
 @Entity
+@ManagedBean(name = "publisher")
 public class Publishers {
     private int id;
     private String name;
+    private List<Books> booksesById;
 
     @Id
-    @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "ID")
+    @Column(name = "ID", nullable = false)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     public int getId() {
         return id;
     }
@@ -26,7 +27,7 @@ public class Publishers {
     }
 
     @Basic
-    @Column(name = "NAME")
+    @Column(name = "NAME", nullable = true, length = 100)
     public String getName() {
         return name;
     }
@@ -48,11 +49,19 @@ public class Publishers {
         return true;
     }
 
-
     @Override
     public int hashCode() {
         int result = id;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
+    }
+
+    @OneToMany(mappedBy = "publishersByPublisherid")
+    public List<Books> getBooksesById() {
+        return booksesById;
+    }
+
+    public void setBooksesById(List<Books> booksesById) {
+        this.booksesById = booksesById;
     }
 }

@@ -20,13 +20,13 @@
                                      value="All Books"/>
                     <p:commandButton
                             style="background:transparent; color: white; border-color:white; border-radius: 10px;"
-                            styleClass="navbar-btn" value="Genres"/>
+                            styleClass="navbar-btn" value="Genres" action="${navigatorBean.forwardToPage('/public/auth/genrelist.jsf',false,true)}"/>
                     <p:commandButton
                             style="background:transparent; color: white; border-color:white; border-radius: 10px;"
-                            styleClass="navbar-btn" value="Authors"/>
+                            styleClass="navbar-btn" value="Authors" action="${navigatorBean.forwardToPage('/public/auth/authorlist.jsf',false,true)}"/>
                     <p:commandButton
                             style="background:transparent; color: white; border-color:white; border-radius: 10px;"
-                            styleClass="navbar-btn" value="Publishers"/>
+                            styleClass="navbar-btn" value="Publishers" action="${navigatorBean.forwardToPage('/public/auth/publisherlist.jsf',false,true)}"/>
                     <p:commandButton action="${navigatorBean.forwardToPage('/public/auth/addbook.jsf',false,true)}"
                                      style="background:transparent; color: white; border-color:white; border-radius: 10px;"
                                      styleClass="navbar-btn" value="Add Book Fastly"/>
@@ -42,12 +42,12 @@
             <div class="row">
                 <div class="col-xs-offset-2 col-xs-6" style="margin-top:8px; ">
                     <p:inputText style="border-color:black;border-radius:15px;" class="form-control"
-                                 placeholder="Aramak istediğiniz kelime ?"/>
+                                 placeholder="Search something ?"/>
                 </div>
                 <div class="col-xs-2 col-xs-pull-0" style="margin-top: 5px;">
                     <p:commandButton
                             style="border-style:double;border-radius: 25px;border-color: black; color: black; background: white;"
-                            type="submit" class="btn btn-block" value="Ara" icon="ui-icon-search"/>
+                            type="submit" class="btn btn-block" value="Search" icon="ui-icon-search"/>
                 </div>
             </div>
         </div>

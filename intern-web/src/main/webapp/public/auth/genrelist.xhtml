@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head></h:head>
+<h:body>
+    <ui:composition template="/public/template/common/commonLayout.xhtml">
+        <ui:define name="main">
+            <div class="container" style="margin-top: 110px; margin-bottom: 110px;">
+                <div class="col-md-4">
+
+                    <p:commandButton icon="ui-icon-plus" styleClass="btn btn-block btn-success" style="border-radius: 25px;"
+                                     value="Add Genre"
+                                     action="#{navigatorBean.forwardToPage('/public/auth/addgenre.jsf',false,true)}"/>
+                </div>
+                <br/><br/><br/>
+                <div>
+                    <h:form>
+                        <p:growl id="msgs" showDetail="true"/>
+                        <p:panel id="basic" header="All Genres" style="margin-bottom:20px">
+                            <h:panelGrid columns="2" cellpadding="10">
+                                <p:dataTable id="dtb" value="#{genreService.findAll()}" var="o">
+                                    <p:column headerText="Genre Name">
+                                        #{o.name}
+                                    </p:column>
+
+                                    <p:column headerText="Functions">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <p:commandButton styleClass="btn-block" value="Delete"
+                                                                 action="#{genreService.delete(o.id)}">
+                                                    <f:ajax render="dtb"/>
+                                                </p:commandButton>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <p:commandButton styleClass="btn-block" value="Edit"
+                                                                 action="#{genreBean.getGenreWithURL(o.id,'editgenre')}"/>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <p:commandButton styleClass="btn-block" value="Details"
+                                                                 action="#{genreBean.getGenreWithURL(o.id,'genredetail')}"/>
+                                            </div>
+                                        </div>
+                                    </p:column>
+                                </p:dataTable>
+                            </h:panelGrid>
+                        </p:panel>
+                    </h:form>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>
