@@ -11,47 +11,162 @@
 <h:body>
     <ui:composition template="/public/template/common/commonLayout.xhtml">
         <ui:define name="main">
-            <div class="container" style="margin-top: 110px; margin-bottom: 110px;">
-                <div class="col-md-4">
-
-                    <p:commandButton icon="ui-icon-plus" styleClass="btn btn-block btn-success"
-                                     style="border-radius: 25px;"
-                                     value="Add Author"
-                                     action="#{navigatorBean.forwardToPage('/public/auth/addauthor.jsf',false,true)}"/>
+            <div class="navbar" style="margin: 0px; border: none;">
+                <div class="navbar navbar-default"
+                     style="border-radius:0px; width: 100%;margin: 0px;border: none;background-color: lightgray;">
+                    <div class="container" style="text-align: center;">
+                        <div class="row">
+                            <div class="col-xs-offset-2 col-xs-6" style="margin-top:8px; ">
+                                <p:inputText style="border-color:black;border-radius:15px;" class="form-control"
+                                             placeholder="Search something ?"/>
+                            </div>
+                            <div class="col-xs-2 col-xs-pull-0" style="margin-top: 5px;">
+                                <p:commandButton
+                                        style="border-style:double;border-radius: 25px;border-color: black; color: black; background: white;"
+                                        type="submit" class="btn btn-block" value="Search" icon="ui-icon-search"/>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <br/><br/><br/>
-                <div>
-                    <h:form>
-                        <p:growl id="msgs" showDetail="true"/>
-                        <p:panel id="basic" header="All Authors" style="margin-bottom:20px">
-                            <h:panelGrid columns="2" cellpadding="10">
-                                <p:dataTable id="dtb" value="#{authorService.findAll()}" var="o">
-                                    <p:column headerText="Author Name">
-                                        #{o.name}
-                                    </p:column>
+            </div>
+            <div style="background: url(#{resource['alu:img/library.jpg']}) center center fixed; margin: 0;">
+                <div class="container">
+                    <div class="col-md-4">
+                        <h:form id="form2">
+                            <p:commandLink update="dialog3" icon="ui-icon-plus" styleClass="btn btn-block btn-success"
+                                           style="border-radius: 25px; z-index: 999; margin-top: 110px;"
+                                           value="Add Author"
+                                           oncomplete="PF('dlg3').show();"></p:commandLink>
+                            <!--====================================================================-->
+                            <!--=======================ADD AUTHOR DIALOG============================-->
+                            <!--====================================================================-->
+                            <p:dialog id="dialog3" draggable="false" header="New Author"
+                                      hideEffect="fade"
+                                      showEffect="fade" widgetVar="dlg3" modal="false" width="450"
+                                      height="303" resizable="false">
+                                <!--<h:form styleClass="form-horizontal" id="editForm">-->
+                                <div class="form-group">
+                                    <h:outputText value="Author Name"/>
+                                    <p:inputText id="aName1" styleClass="form-control"
+                                                 value="#{authorBean.authors.name}"/><br/>
+                                </div>
+                                <div class="form-group">
+                                    <h:outputText value="Author Surname"/>
+                                    <p:inputText id="aSurname1" styleClass="form-control"
+                                                 value="#{authorBean.authors.surname}"/><br/>
+                                </div>
+                                <div class="form-group">
+                                    <h:commandButton
+                                            styleClass="btn btn-success" type="submit"
+                                            action="#{authorBean.createAuthor(authorBean.authors)}"
+                                            value="Add">
+                                    </h:commandButton>
+                                </div>
+                            </p:dialog>
 
-                                    <p:column headerText="Functions">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <p:commandButton styleClass="btn-block" value="Delete"
-                                                                 action="#{authorService.delete(o.id)}">
-                                                    <f:ajax render="dtb"/>
-                                                </p:commandButton>
+                        </h:form>
+                    </div>
+                    <div style="margin-top: 220px; margin-bottom: 278px;">
+                        <h:form id="form">
+                            <p:growl id="msgs" showDetail="true"/>
+                            <p:panel id="basic" header="All Authors" style="margin-bottom:20px; opacity: 0.9;">
+                                <h:panelGrid columns="2" cellpadding="10">
+                                    <p:dataTable id="dtb1" value="#{authorBean.findAllAuthors()}" var="au"
+                                                 disabledSelection="true">
+                                        <p:column headerText="Author Name">
+                                            #{au.name} #{au.surname}
+                                        </p:column>
+                                        <p:column style="text-align: center;" headerText="Functions">
+                                            <div>
+                                                <p:commandLink
+                                                        style="margin-right: 4px; color: white; text-align:center;"
+                                                        styleClass="btn btn-danger btn-circle btn-xl "
+                                                        action="#{authorService.delete(au.id)}">
+                                                    <i style="vertical-align: middle;"
+                                                       class="glyphicon glyphicon-remove"><f:ajax
+                                                            render="dtb1"></f:ajax></i>
+
+                                                </p:commandLink>
+                                                <p:commandLink update="dialog2"
+                                                               style="margin-right: 4px;color: white; border-radius: 40px;"
+                                                               styleClass="btn btn-primary btn-circle btn-xl "
+                                                               type="button" oncomplete="PF('dlg2').show();">
+                                                    <i style="vertical-align: middle;"
+                                                       class="glyphicon glyphicon-pencil"></i>
+                                                </p:commandLink>
+                                                <p:commandLink update="dialog"
+                                                               style="margin-right: 4px;color: white; border-radius: 40px;"
+                                                               styleClass="btn btn-circle btn-xl btn-warning"
+                                                               type="button" oncomplete="PF('dlg').show();">
+                                                    <i style="vertical-align: middle;"
+                                                       class="glyphicon glyphicon-info-sign"></i>
+                                                </p:commandLink>
+                                                <!--====================================================================-->
+                                                <!--=======================AUTHOR INFO DIALOG===========================-->
+                                                <!--====================================================================-->
+                                                <p:dialog id="dialog" header="Author Info" hideEffect="fade"
+                                                          showEffect="fade" widgetVar="dlg" modal="true" width="450"
+                                                          height="225" resizable="false">
+                                                    <!--<h:form styleClass="form-group" id="infoForm">-->
+                                                    <div>
+                                                        <h:outputText value="Author ID"/>
+                                                        <h:inputText styleClass="form-control" value="#{au.id}"
+                                                                     readonly="true"/><br/>
+                                                    </div>
+                                                    <div>
+                                                        <h:outputText value="Author Name"/>
+                                                        <h:inputText styleClass="form-control" value="#{au.name}"
+                                                                     readonly="true"/><br/>
+                                                    </div>
+                                                    <div>
+                                                        <h:outputText value="Author Surname"/>
+                                                        <h:inputText styleClass="form-control" value="#{au.surname}"
+                                                                     readonly="true"/><br/>
+                                                    </div>
+                                                    <!--</h:form>-->
+                                                </p:dialog>
+                                                <!--====================================================================-->
+                                                <!--======================AUTHOR EDIT DIALOG============================-->
+                                                <!--====================================================================-->
+                                                <p:dialog id="dialog2" draggable="false" header="Author Edit"
+                                                          hideEffect="fade"
+                                                          showEffect="fade" widgetVar="dlg2" modal="false" width="450"
+                                                          height="303" resizable="false">
+                                                    <!--<h:form styleClass="form-horizontal" id="editForm">-->
+                                                    <h:outputText value="#{authorBean.findAuthor(au.id)}"/>
+                                                    <div class="form-group">
+                                                        <h:outputText value="Author ID"/>
+                                                        <p:inputText styleClass="form-control"
+                                                                     id="aId" value="#{authorBean.authors.id}"
+                                                                     readonly="true"/><br/>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <h:outputText value="Author Name"/>
+                                                        <p:inputText id="aName" styleClass="form-control"
+                                                                     value="#{authorBean.authors.name}"/><br/>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <h:outputText value="Author Surname"/>
+                                                        <p:inputText id="aSurname" styleClass="form-control"
+                                                                     value="#{authorBean.authors.surname}"/><br/>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <h:commandButton
+                                                                styleClass="btn btn-success" type="submit"
+                                                                action="#{authorBean.updateAuthor(authorBean.authors)}"
+                                                                value="Save">
+                                                        </h:commandButton>
+                                                    </div>
+                                                    <!--</h:form>-->
+                                                </p:dialog>
+
                                             </div>
-                                            <div class="col-md-4">
-                                                <p:commandButton styleClass="btn-block" value="Edit"
-                                                                 action="#{authorBean.getAuthorWithURL(o.id,'editauthor')}"/>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <p:commandButton styleClass="btn-block" value="Details"
-                                                                 action="#{authorBean.getAuthorWithURL(o.id,'authordetail')}"/>
-                                            </div>
-                                        </div>
-                                    </p:column>
-                                </p:dataTable>
-                            </h:panelGrid>
-                        </p:panel>
-                    </h:form>
+                                        </p:column>
+                                    </p:dataTable>
+                                </h:panelGrid>
+                            </p:panel><!--action="#{authorBean.getAuthorWithURL(o.id,'authordetail')}" -->
+                        </h:form>
+                    </div>
                 </div>
             </div>
         </ui:define>

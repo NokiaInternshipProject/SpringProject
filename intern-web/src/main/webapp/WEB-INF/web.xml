@@ -100,12 +100,11 @@
         <param-name>javax.faces.DEFAULT_SUFFIX</param-name>
         <param-value>.xhtml</param-value>
     </context-param>
-
+<!--
     <session-config>
         <session-timeout>5</session-timeout>
         <tracking-mode>COOKIE</tracking-mode>
-    </session-config>
-
+    </session-config>-->
 
     <context-param>
         <param-name>javax.faces.PROJECT_STAGE</param-name>

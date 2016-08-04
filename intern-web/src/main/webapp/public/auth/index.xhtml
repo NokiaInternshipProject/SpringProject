@@ -27,43 +27,25 @@
             background-color: #ccc;
             border-radius: 3px;
         }
-
     </style>
 </h:head>
 <h:body>
     <ui:composition template="/public/template/common/commonLayout.xhtml">
         <ui:define name="main">
-            <div class="container" style="margin-top: 110px; margin-bottom: 110px;">
-                <h:form>
-                    <p:growl id="msgs" showDetail="true"/>
-                    <p:panel id="basic" header="Last Books" style="margin-bottom:20px">
-                        <h:panelGrid columns="2" cellpadding="10">
-                            <p:dataTable id="table" value="#{bookService.findAll()}" var="o"
-                                         rows="7">
-                                <p:column id="name" headerText="Name">
-                                    #{o.name}
-                                </p:column>
-                                <p:column id="year" headerText="Year">
-                                    #{o.year}
-                                </p:column>
-                                <p:column id="pblsh" headerText="Publisher">
-                                    #{publisherService.get(o.publisherid).name}
-                                </p:column>
-                                <p:column headerText="Functions">
-                                    <p:commandButton value="Delete" action="#{bookService.delete(o.id)}">
-                                        <f:ajax render="table"/>
-                                    </p:commandButton>
-                                    <p:commandButton value="Edit"
-                                                     action="#{bookBean.getBookWithURL(o.id,'editbook')}">
-                                        <f:param name="bookID" value="#{o.id}"/>
-                                    </p:commandButton>
-                                    <p:commandButton value="Details"
-                                                     action="#{bookBean.getBookWithURL(o.id,'bookdetail')}"/>
-                                </p:column>
-                            </p:dataTable>
-                        </h:panelGrid>
-                    </p:panel>
-                </h:form>
+            <div class="container-fluid background" style="padding: 20%;
+            background:url(http://i.hizliresim.com/OMQ4qn.jpg) no-repeat center center fixed;background-size:auto; ">
+                <div class="col-md-10 col-md-offset-1"
+                     style="background: black; border-radius: 35px; opacity: 0.85; ">
+                    <div class="form-group-lg"
+                         style="margin-bottom: 15px; margin-top: 20px; margin-left: 35px; margin-right: 35px;">
+                        <p:inputText placeholder="Search something ?" style="border-radius: 35px;" styleClass="form-control"/>
+                    </div>
+                    <div style="text-align: center">
+                        <p:commandLink styleClass="btn btn-success btn-circle btn-xl"
+                                       style="margin-bottom: 20px;bor margin-top: 0px;">
+                            <i style="vertical-align:middle;" class="glyphicon glyphicon-search"></i></p:commandLink>
+                    </div>
+                </div>
             </div>
         </ui:define>
     </ui:composition>

@@ -13,6 +13,24 @@
 <h:body>
     <ui:composition template="/public/template/common/commonLayout.xhtml">
         <ui:define name="main">
+            <div class="navbar" style="margin: 0px; border: none;">
+                <div class="navbar navbar-default"
+                     style="border-radius:0px; width: 100%;margin: 0px;border: none;background-color: lightgray;">
+                    <div class="container" style="text-align: center;">
+                        <div class="row">
+                            <div class="col-xs-offset-2 col-xs-6" style="margin-top:8px; ">
+                                <p:inputText style="border-color:black;border-radius:15px;" class="form-control"
+                                             placeholder="Search something ?"/>
+                            </div>
+                            <div class="col-xs-2 col-xs-pull-0" style="margin-top: 5px;">
+                                <p:commandButton
+                                        style="border-style:double;border-radius: 25px;border-color: black; color: black; background: white;"
+                                        type="submit" class="btn btn-block" value="Search" icon="ui-icon-search"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="container" style="margin:100px;">
                 <h:form id="frm" styleClass="form-horizontal">
                     <div class="col-md-offset-3 col-md-6">

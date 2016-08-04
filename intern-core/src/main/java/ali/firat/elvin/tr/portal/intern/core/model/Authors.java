@@ -10,7 +10,7 @@ import java.util.Collection;
  * Created by yektan on 26.07.2016.
  */
 @Entity
-@ManagedBean(name = "author")
+@ManagedBean(name="author")
 public class Authors {
     private int id;
     private String name;
