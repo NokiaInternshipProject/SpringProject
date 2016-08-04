@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
+
+
+    <!--<bean id="randomBook" class="ali.firat.elvin.tr.portal.webservice.WebServiceClassImpl"/>-->
+
+    <!--<jaxws:endpoint id="randomBookService" implementor="#randomBook" address="/bookService" />-->
+
+    <bean id="hello" class="ali.firat.elvin.tr.portal.util.WebServiceImpl"/>
+    <jaxws:endpoint id="helloWS" implementor="#hello" address="/helloWorld"/>
+</beans>
