@@ -48,6 +48,8 @@
                 <prop key="hibernate.hikari.dataSource.prepStmtCacheSize">${hibernate.hikari.dataSource.prepStmtCacheSize}</prop>
                 <prop key="hibernate.hikari.dataSource.prepStmtCacheSqlLimit">${hibernate.hikari.dataSource.prepStmtCacheSqlLimit}</prop>
                 <prop key="hibernate.hikari.dataSource.cachePrepStmts">${hibernate.hikari.dataSource.cachePrepStmts}</prop>
+                <prop key="hibernate.connection.url">jdbc:mysql://localhost:3306/intern</prop>
+                <prop key="hibernate.connection.driver_class">com.mysql.jdbc.Driver</prop>
                 <!-- MYSQL OPTIMIZATION-->
             </props>
         </property>

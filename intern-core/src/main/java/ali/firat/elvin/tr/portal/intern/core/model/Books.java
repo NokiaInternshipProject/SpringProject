@@ -114,4 +114,9 @@ public class Books {
     public void setBookGenresById(List<BookGenre> bookGenresById) {
         this.bookGenresById = bookGenresById;
     }
+
+    @Override
+    public String toString() {
+        return "Book id =" + getId() + "Book Name = " + getName() + "Book Publish Year" + getYear();
+    }
 }

@@ -12,6 +12,7 @@
         <module>intern-core</module>
         <module>intern-middleware</module>
         <module>intern-web</module>
+        <module>intern-web-service</module>
     </modules>
 
     <properties>
